@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+        table.static {
+            position: relative;
+            border: 1px solid #543535;
+        }
+    </style>
+    <title>Cetak Data Barang</title>
+</head>
+<body>
+    <div class="form-group"> 
+        <p align="center"><b>Laporan Data Barang</b></p>
+        <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
+            <tr>
+                <th>No</th>
+                <th width="280px" class="text-center">Tanggal</th>
+                <th width="280px"class="text-center">Nama Pegawai</th>
+                <th width="280px"class="text-center">Nama Barang</th>
+                <th width="280px"class="text-center">Jumlah</th>
+                <th width="280px"class="text-center">Unit Kerja</th>
+                <th width="280px"class="text-center">Keterangan</th>
+            </tr>
+            @foreach ($gudang as $item)
+            <tr>
+                <td class="text-center">{{ ++$i }}</td>
+                <td>{{ $item->Tanggal}}</td>
+                <td>{{ $item->NamaPegawai }}</td>
+                <td>{{ $item->NamaBarang }}</td>
+                <td>{{ $item->Jumlah }}</td>
+                <td>{{ $item->UnitKerja }}</td>
+                <td>{{ $item->Keterangan }}</td>
+            </tr>
+            @endforeach
+        </table>
+    </div>
+</body>
+
+</html>
+<!-- end document-->

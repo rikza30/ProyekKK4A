@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GudangControllers;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+Route::get('/home', function () {
+    return view('home');
+});
+
+
+Route::resource('gud', GudangControllers::class);
+Auth::routes();
+
+Route::group(['middleware' => ['auth']], function (){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('home', [GudangControllers::class, 'show'])->name('home');
+    Route::get('/', [GudangControllers::class, 'index'])->name('home');
+    Route::get('/cetak',[GudangControllers::class, 'cetak'])->name('cetak');
+    Route::get('/cetakdata/{tglAwal}/{tglAkhir}',[GudangControllers::class, 'cetakdata'])->name('cetakdata');
+    Route::get('/cetakdatabarang',[GudangControllers::class, 'cetakBarang'])->name('cetakBarang');
+});
