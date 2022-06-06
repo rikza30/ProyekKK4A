@@ -47,7 +47,7 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="{{route('register')}}" method="post">
+                            <form action="{{ route('register')}}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label>Username</label>
